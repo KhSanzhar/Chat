@@ -13,7 +13,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    modules: [
+      '@nuxtjs/axios',
+    ],
+    axios: {
+      baseURL: 'http://api.example.com',
+      browserBaseURL: process.env.NODE_ENV === 'production' ? 'http://api.example.com' : 'http://localhost:3000',
+    },
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -34,6 +41,10 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify'
   ],
+
+  serverMiddleware: {
+    '/api': '~/api'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -70,4 +81,5 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
+
 }
